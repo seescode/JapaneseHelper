@@ -8,7 +8,7 @@ angular.module('japaneseHelperApp')
         template: 
         '<div>' +
         '  <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="pageSize"></pagination>' +
-        '    <ul><li ng-repeat="i in items">{{i}}</li></ul>' +
+        '    <ul class="kanjis"><li ng-repeat="i in items" ng-click="showEnglish(i)">{{i}}</li></ul>' +
         '  <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="pageSize"></pagination>' +
         '</div>',        
         scope: { 
@@ -17,7 +17,8 @@ angular.module('japaneseHelperApp')
         controller: function ($scope) {
         },
         link: function (scope, element, attrs) {
-  			var kanjis = new kanjiHelper.RtkList();
+  			var kanjis = new kanjiHelper.RtkList();  			
+  			var conversions = new kanjiHelper.KanjiKeywordList();
         
   			scope.totalItems = kanjis.Length();
   			scope.currentPage = 1;
@@ -42,6 +43,10 @@ angular.module('japaneseHelperApp')
 								
 				scope.items = pageItems;				
   			};        
+  			
+  			scope.showEnglish = function(kanji) {
+  				alert(conversions.Get(kanji));
+  			};
   			
   			scope.pageChanged();
         }

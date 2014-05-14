@@ -2107,11 +2107,11 @@ angular.module('japaneseHelperApp')
 	
 		for (var i=0;i<charlistA.length;i++)
 		{
-			if (lookuplist[charlistA[i]] === null)
+			if (lookuplist[charlistA[i]] === undefined)
 			{
 				lookuplist[charlistA[i]] = charlistB[i];
 			}
-			if (lookuplist[charlistB[i]] === null)
+			if (lookuplist[charlistB[i]] === undefined)
 			{
 				lookuplist[charlistB[i]] = charlistA[i];
 			}
