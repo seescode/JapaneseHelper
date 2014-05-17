@@ -30,14 +30,14 @@ angular.module('japaneseHelperApp')
 	
 				var pageItems = [];
 				
-				var startIndex = (scope.currentPage - 1) * scope.pageSize + 1;
-				var endIndex = scope.currentPage * scope.pageSize;
+				scope.startIndex = (scope.currentPage - 1) * scope.pageSize + 1;
+				scope.endIndex = scope.currentPage * scope.pageSize;
 				
 				if (scope.currentPage === lastPage) {
-					endIndex = scope.totalItems;
+					scope.endIndex = scope.totalItems;
 				}				
 				
-				for (var i=startIndex;i<=endIndex;i++) {					
+				for (var i=scope.startIndex;i<=scope.endIndex;i++) {					
 					pageItems.push(kanjis.GetById(i));
 				}
 								
