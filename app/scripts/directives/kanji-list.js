@@ -37,7 +37,7 @@ angular.module('japaneseHelperApp')
 					scope.endIndex = scope.totalItems;
 				}				
 				
-				for (var i=scope.startIndex;i<=scope.endIndex;i++) {					
+				for (var i=scope.startIndex;i<=scope.endIndex;i++) {	
 					pageItems.push(kanjis.GetById(i));
 				}
 								
