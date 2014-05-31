@@ -2122,66 +2122,6 @@ angular.module('japaneseHelperApp')
 			return lookuplist[value];
 		};
 	};
-
-
-    kanjiHelper.KanjiItem = function (kanji, keyword) {
-    	
-    	function equals(item) {
-    		if (item.
-    	}
-    	
-    	return {
-    		kanji: kanji,
-    		keyword: keyword,
-    		equals: equals,
-    		correct: correct,
-    		incorrect: incorrect    	
-    	}
-    
-    }
-    
-var revealed = function(){
-   var a = [1,2,3];
-   function abc(){
-     return (a[0]*a[1])+a[2];
-   }
-
-   return {
-      name: 'revealed',
-      abcfn: abc
-   }
-}();
-
-    kanjiHelper.KanjiSet = function (itemArray) {
-    	if (itemArray == null || _.isArray(itemArray) === false) {
-    	  throw {
-    	  	exception: "itemArray must be an array of item(s)";
-    	  };
-    	}
-    
-        var kanjiKeywordList = new kanjiHelper.KanjiKeywordList();
-        
-        for (var i=0;i<itemArray.length;i++) {
-        	
-        	
-        	
-        }
-        
-    };	
-	
-	KanjiSet
--GetUniqueRandom()  //returns KanjiItem
--Reset()
--Create()
--Contains an array of KanjiItems
-
-KanjiItem
--kanji
--keyword
--equals()
--correct()
--incorrect()
-
 	
   return kanjiHelper;
 });
