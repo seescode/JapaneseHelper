@@ -1,9 +1,11 @@
-<!doctype html>
+﻿<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+ <!--<![endif]-->
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -17,12 +19,11 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-  </head>
-  <body ng-app="japaneseHelperApp">
+</head>
+<body ng-app="japaneseHelperApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <!-- Add your site or application content here -->
     <div class="container" ng-view=""></div>
 
@@ -30,7 +31,6 @@
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
-
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -44,13 +44,15 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/kanji-helper.js"></script>        
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/directives/kanji-list.js"></script>
-        
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/constants-service.js"></script>
+    <script src="scripts/services/kanji-helper.js"></script>
+    <script src="scripts/services/kanji-item-service.js"></script>
+    <script src="scripts/services/kanji-set-service.js"></script>
+    <script src="scripts/controllers/guess-kanji.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/directives/kanji-list.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

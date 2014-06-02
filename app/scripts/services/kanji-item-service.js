@@ -14,11 +14,16 @@ angular.module('japaneseHelperApp').factory('kanjiItemService', function () {
     correct = function () {
         //TODO
         console.log("Saving to local storage as correct");
+        alert("correct called");
+        alert("kanji: " + this.kanji);
+        alert("keyword: " + this.kanji);
+
     },
 
     incorrect = function () {
         //TODO
         console.log("Saving to local storage as incorrect");
+        alert("incorrect called");
     };
 
     var kanji = "";

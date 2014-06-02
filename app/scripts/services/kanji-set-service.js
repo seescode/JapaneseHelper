@@ -2,22 +2,15 @@
 
 angular.module('japaneseHelperApp').factory('kanjiSetService', function () {
 
-    var getUniqueRandom = function (item) {
-
-    },
-
-    reset = function () {
-        this.items = [];
-    },
-
-    create = function (kanjiItemsArray) {
+    return function (kanjiItemsArray) {
         this.items = kanjiItemsArray;
-    };
 
-    return {
-        getUniqueRandom: getUniqueRandom,
-        reset: reset,
-        create: create
-    };
+        this.getUniqueRandom = function (item) {
+            return this.items[0];
+        };
 
+        this.reset = function () {
+            this.items = [];
+        };
+    };
 });
