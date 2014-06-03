@@ -4,7 +4,7 @@
     The way I envision using this is say that you are on level 1 which has kanji 1 to 25.
     You would then use this service with the first 25 kanji passed into the constructor.
     You would run getNext on each new kanji until you get to the last one.  In order
-    to get random options I would call getRandomOption.  
+    to get random options I would call getRandomOption.
 */
 
 angular.module('japaneseHelperApp').factory('kanjiSetService', function () {
@@ -23,6 +23,7 @@ angular.module('japaneseHelperApp').factory('kanjiSetService', function () {
                 };
             }
 
+            this.reset();
             this.nextIndex++;
 
             return this.items[this.nextIndex];        
