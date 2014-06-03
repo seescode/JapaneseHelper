@@ -1,16 +1,28 @@
 ﻿'use strict';
 
-angular.module('japaneseHelperApp').factory('kanjiSetService', function (utilityService) {
+angular.module('japaneseHelperApp').factory('kanjiSetService', function () {
 
     return function (kanjiItemsArray) {
-        this.items = utilityService.shuffle(kanjiItemsArray);
+        this.items = kanjiItemsArray;
+        this.shuffledItems = _.shuffle(angular.copy(this.items));
 
-        this.getUniqueRandom = function (item) {
-            return this.items[0];
+        this.popUniqueRandom = function (item) {
+
+            if (this.shuffledItems.length <= 0) {
+                throw {
+                    error: "Cannot pop unique random when length is 0"
+                };
+            }
+
+            return this.shuffledItems.pop();
+        };
+
+        this.length = function () {
+            return this.shuffledItems.length;
         };
 
         this.reset = function () {
-            this.items = [];
+            this.shuffledItems = _.shuffle(angular.copy(this.items));
         };
     };
 });

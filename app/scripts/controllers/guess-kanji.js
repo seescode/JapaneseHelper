@@ -3,8 +3,14 @@
 angular.module('japaneseHelperApp')
   .controller('GuessKanjiCtrl', function ($scope, kanjiSetService) {
 
-      var set = new kanjiSetService(['12', '34']);
+      var set = new kanjiSetService(['12', '34', '55', '77']);
 
-      $scope.abc = set.getUniqueRandom();
+      set.popUniqueRandom();
+      set.popUniqueRandom();
+      set.popUniqueRandom();
+      set.popUniqueRandom();
+  
+      $scope.abc = set.length();
+
 
   });
