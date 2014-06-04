@@ -5,12 +5,12 @@ angular.module('japaneseHelperApp')
 
       var set = new kanjiSetService(['12', '34', '55', '77']);
 
-      set.popUniqueRandom();
-      set.popUniqueRandom();
-      set.popUniqueRandom();
-      set.popUniqueRandom();
+      var x = set.getNext() + " " + set.getRandomOption() + " " +
+        set.getRandomOption() + " " + set.getRandomOption();
+
+      set.getRandomOption();
   
-      $scope.abc = set.length();
+      $scope.abc = x;
 
 
   });
