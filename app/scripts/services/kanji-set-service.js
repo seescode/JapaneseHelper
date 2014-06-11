@@ -10,6 +10,13 @@
 angular.module('japaneseHelperApp').factory('kanjiSetService', function () {
 
     return function (kanjiItemsArray) {
+
+        if (_.isArray(kanjiItemsArray) === false || kanjiItemsArray === []) {
+            throw {
+                error: "KanjiSetService must take in a nonempty array"
+            }
+        }
+
         this.items = kanjiItemsArray;
         this.shuffledItems = _.shuffle(angular.copy(this.items));
         this.nextIndex = -1;
@@ -26,16 +33,16 @@ angular.module('japaneseHelperApp').factory('kanjiSetService', function () {
             this.reset();
             this.nextIndex++;
 
-            return this.items[this.nextIndex];        
+            return this.items[this.nextIndex];
         };
 
         //Call this method after you have gotten getNext() in order to get possible
         //random values to choose from.
         this.getRandomOption = function () {
 
-            if (this.shuffledItems.length <= 0) {
+            if (this.nextIndex === -1) {
                 throw {
-                    error: "Exhausted all random options."
+                    error: "Call getNext() at least once before calling getRandomOption()"
                 };
             }
 
@@ -62,6 +69,7 @@ angular.module('japaneseHelperApp').factory('kanjiSetService', function () {
             return false;
         };
 
+        //[REFACTOR] and make this a private method
         this.reset = function () {
             this.shuffledItems = _.shuffle(angular.copy(this.items));
         };

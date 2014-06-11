@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: kanjiList', function () {
+describe('Directive: kanji-list', function () {
   var element, scope, compile, mockKanjiHelper,
       validTemplate = '<div kanji-list></div>';
       
