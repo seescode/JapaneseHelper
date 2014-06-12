@@ -2,39 +2,33 @@
 
 angular.module('japaneseHelperApp').factory('kanjiItemService', function () {
 
-    var equals = function (item) {
-        if (this.kanji === item.kanji &&
-            this.keyword === item.keyword) {
-            return true;
-        }
+    return function (kanji, keyword) {
 
-        return false;
-    },
+        this.equals = function (item) {
+            if (this.kanji === item.kanji &&
+                this.keyword === item.keyword) {
+                return true;
+            }
 
-    correct = function () {
-        //TODO
-        console.log("Saving to local storage as correct");
-        alert("correct called");
-        alert("kanji: " + this.kanji);
-        alert("keyword: " + this.kanji);
+            return false;
+        };
 
-    },
+        this.correct = function () {
+            //TODO
+            console.log("Saving to local storage as correct");
+            alert("correct called");
+            alert("kanji: " + this.kanji);
+            alert("keyword: " + this.kanji);
 
-    incorrect = function () {
-        //TODO
-        console.log("Saving to local storage as incorrect");
-        alert("incorrect called");
-    };
+        };
 
-    var kanji = "";
-    var keyword = "";
+        this.incorrect = function () {
+            //TODO
+            console.log("Saving to local storage as incorrect");
+            alert("incorrect called");
+        };
 
-    return {
-        equals: equals,
-        correct: correct,
-        incorrect: incorrect,
-        kanji: this.kanji,
-        keyword: this.keyword
-    };
-
+        this.kanji = kanji;
+        this.keyword = keyword;
+    }
 });
