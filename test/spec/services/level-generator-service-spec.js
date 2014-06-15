@@ -2,6 +2,8 @@
 describe('Service: level-generator-service', function () {
     var mySvc;
     //var kanjiItemSvc;
+    var mockKanjiSetService;
+
 
     // Use to provide any mocks needed
     function _provide(callback) {
@@ -24,9 +26,16 @@ describe('Service: level-generator-service', function () {
         _provide(function (provide) {
             provide.value('constantsService', { KANJI_PER_LEVEL: 5 });
 
-            var kanjiHelper = { RtkList: { Length: 12 } };
+            var kanjiHelper = { RtkList: { Length: 12 }, KanjiKeywordList: {} };
+            kanjiHelper.RtkList.GetById = function () { return '1' };
+            kanjiHelper.KanjiKeywordList.Get = function () { return '1' };
             provide.value('kanjiHelper', kanjiHelper);
 
+            var kanjiItemService = function () { this.x = 2; };
+            provide.value('kanjiItemService', kanjiItemService);
+
+            mockKanjiSetService = jasmine.createSpy('mockKanjiSetService');
+            provide.value('kanjiSetService', mockKanjiSetService);
         });
 
         // Inject the code under test
@@ -38,32 +47,30 @@ describe('Service: level-generator-service', function () {
         module('japaneseHelperApp');
     });
 
-    xdescribe('generate()', function () {
+    describe('generate()', function () {
         beforeEach(function () {
             // Inject with expected values
             _setup();
         });
 
-        it('should return correct kanji for level 1', function () {
+        it('should generate correct number of kanji for level 1', function () {
             var kanjiSet = mySvc.generate(1);
 
-            expect(range.beginIndex).toEqual(0);
-            expect(range.endIndex).toEqual(4);
+            expect(mockKanjiSetService.mostRecentCall.args[0].length).toEqual(5);
         });
 
-        it('should return correct kanji for level 2', function () {
+        it('should generate correct number of kanji for level 2', function () {
             var kanjiSet = mySvc.generate(2);
 
-            expect(range.beginIndex).toEqual(5);
-            expect(range.endIndex).toEqual(9);
+            expect(mockKanjiSetService.mostRecentCall.args[0].length).toEqual(5);
         });
 
-        it('should return correct kanji for last level', function () {
+        it('should generate correct number of kanji for last level', function () {
             var kanjiSet = mySvc.generate(3);
 
-            expect(range.beginIndex).toEqual(10);
-            expect(range.endIndex).toEqual(11);
+            expect(mockKanjiSetService.mostRecentCall.args[0].length).toEqual(2);
         });
+
     });
 
     describe('determineRtkRange()', function () {
