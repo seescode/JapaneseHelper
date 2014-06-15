@@ -2,6 +2,7 @@
 // JavaScript
 describe('Service: kanji-set-service', function () {
     var mySvc;
+    var kanjiItemSvc;
 
     // Use to provide any mocks needed
     function _provide(callback) {
@@ -13,8 +14,9 @@ describe('Service: kanji-set-service', function () {
 
     // Use to inject the code under test
     function _inject() {
-        inject(function (kanjiSetService) {
+        inject(function (kanjiSetService, kanjiItemService) {
             mySvc = kanjiSetService;
+            kanjiItemSvc = kanjiItemService;
         });
     }
 
@@ -80,6 +82,33 @@ describe('Service: kanji-set-service', function () {
             }
 
             expect(newArray).toEqual(kanjiItemsArray);
+        });
+
+        it('should return 5 kanji in the same order as kanjiItemsArray', function () {
+
+            var kanjiItemsArray = [new kanjiItemSvc('今', 'now'),
+                new kanjiItemSvc('良', 'good'),
+                new kanjiItemSvc('肉', 'meat'),
+                new kanjiItemSvc('僕', 'me'),
+                new kanjiItemSvc('最', 'recently')];
+
+            var svc = new mySvc(kanjiItemsArray);
+
+            var newArray = [];
+
+            var i = 0;
+            while (i < kanjiItemsArray.length) {
+                newArray.push(svc.getNext());
+                i++;
+            }
+
+            var j = 0;
+            while (j < kanjiItemsArray.length) {
+                expect(newArray[j].kanji).toEqual(kanjiItemsArray[j].kanji);
+                expect(newArray[j].keyword).toEqual(kanjiItemsArray[j].keyword);
+                j++;
+            }
+
         });
 
 
