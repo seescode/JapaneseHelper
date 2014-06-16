@@ -1,13 +1,5 @@
 ﻿'use strict';
 
-/*
-    This generates all the kanjis needed for a specific level.
-
-    What are the methods you want for this?  
-      -I think GenerateLevel(level) is all this should take.
-      -This shouldn't be a newable function.  Instead it should just be an object
-*/
-
 angular.module('japaneseHelperApp').factory('levelGeneratorService', function (kanjiSetService, kanjiItemService, constantsService, kanjiHelper) {
 
     var generate = function (level) {
