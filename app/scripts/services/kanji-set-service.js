@@ -48,6 +48,12 @@ angular.module('japaneseHelperApp').factory('kanjiSetService', function () {
 
             var randomItem = this.shuffledItems.pop();
 
+            if (randomItem === undefined) {
+                throw {
+                    error: "Exhausted all random options."
+                };
+            }
+
             if (this.nextIndex >= 0 && randomItem.equals(this.items[this.nextIndex])) {
                 if (this.shuffledItems.length <= 0) {
                     throw {

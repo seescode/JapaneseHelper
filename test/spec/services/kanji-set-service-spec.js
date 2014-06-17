@@ -150,8 +150,17 @@ describe('Service: kanji-set-service', function () {
 
         it('should get random options after you call getNext() first', function () {
 
-            var kanjiItemsArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-            var expectedArray = ['2', '3', '4', '5', '6', '7', '8', '9', '10'];
+            var kanjiItemsArray = [new kanjiItemSvc('今', 'now'),
+                new kanjiItemSvc('良', 'good'),
+                new kanjiItemSvc('肉', 'meat'),
+                new kanjiItemSvc('僕', 'me'),
+                new kanjiItemSvc('最', 'recently')];
+
+            var expectedArray = [
+                new kanjiItemSvc('良', 'good'),
+                new kanjiItemSvc('肉', 'meat'),
+                new kanjiItemSvc('僕', 'me'),
+                new kanjiItemSvc('最', 'recently')];
 
             var svc = new mySvc(kanjiItemsArray);
             svc.getNext();
@@ -164,26 +173,42 @@ describe('Service: kanji-set-service', function () {
                 i++;
             }
 
-            newArray.sort();
-            expectedArray.sort();
+            var sorter = function (a, b) {
+                if (a.keyword < b.keyword) {
+                    return -1;
+                }
 
-            expect(newArray).toEqual(expectedArray);
+                return 1;
+            };
+
+            newArray.sort(sorter)
+            expectedArray.sort(sorter);
+
+            expect(newArray.length).toEqual(expectedArray.length);
+
+            i = 0;
+            while (i < expectedArray.length) {
+                expect(newArray[i].kanji).toEqual(expectedArray[i].kanji);
+                expect(newArray[i].keyword).toEqual(expectedArray[i].keyword);
+                i++;
+            }
+
         });
 
         it('should err out when getting too many random options', function () {
-
-            var kanjiItemsArray = ['1', '2', '3'];
-            var expectedArray = ['2', '3'];
+            var kanjiItemsArray = [new kanjiItemSvc('今', 'now'),
+                new kanjiItemSvc('良', 'good'),
+                new kanjiItemSvc('肉', 'meat')];
 
             var svc = new mySvc(kanjiItemsArray);
             svc.getNext();
 
             var newArray = [];
 
-            svc.getRandomOption();
-            svc.getRandomOption();
-
             try {
+                //This test can fail either on the 2nd or 3rd call to getRandomOption().  It's random.  
+                svc.getRandomOption();
+                svc.getRandomOption();
                 svc.getRandomOption();
             }
             catch (e) {
