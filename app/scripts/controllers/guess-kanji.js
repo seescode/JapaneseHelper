@@ -39,6 +39,9 @@ angular.module('japaneseHelperApp')
       $scope.onAnswerOptionClick = function (kanjiItem) {
 
           if (kanjiItem.equals($scope.questionText)) {
+
+              $scope.questionText.correct();
+
               if (kanjiSet.reachedLastElement() === true) {
                   alert("You win! Try the next level");
 
@@ -58,6 +61,7 @@ angular.module('japaneseHelperApp')
               populateItems();
           }
           else {
+              $scope.questionText.incorrect();
               $location.url('/guess-kanji-level-select');
           }
 
