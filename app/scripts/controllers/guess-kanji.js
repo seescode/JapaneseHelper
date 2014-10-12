@@ -54,8 +54,6 @@ angular.module('japaneseHelperApp')
                   localStorageService.set('currentLevel', lvl);
 
                   kanjiSet = levelGeneratorService.generate($scope.level);
-
-
               }
 
               populateItems();

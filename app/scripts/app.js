@@ -20,7 +20,7 @@ angular
         })
         .when('/guess-kanji-level-select', {
             templateUrl: 'views/guess-kanji-level-select.html',
-            controller: 'GuessKanjiCtrl'
+            controller: 'GuessKanjiLevelSelectCtrl'
         })
         .when('/guess-kanji/:level', {
             templateUrl: 'views/guess-kanji.html',

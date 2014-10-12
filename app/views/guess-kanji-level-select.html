@@ -6,19 +6,15 @@
 </div>
 
 <div>
-    Put your level select logic into this page.  Make sure to use the constants.KANJI_PER_LEVEL
-</div>
-<div>
-    {{abc}}
-</div>
 
-<div>
-    <a href="/guess-kanji/0">Resume</a>
+    <ul>
+        <li><a href="/guess-kanji/0">Resume</a></li>
 
-    <a href="/guess-kanji/1">Level 1</a>
-    <a href="/guess-kanji/20">Level 20</a>
-    <a href="/guess-kanji/30">Level 30</a>
-    <a href="/guess-kanji/40">Level 40</a>
+        <li ng-repeat="level in levels">
+            <a ng-href="/guess-kanji/{{level}}">Level <span ng-bind="level"></span></a>
+        </li>
+
+    </ul>
 </div>
 
 
