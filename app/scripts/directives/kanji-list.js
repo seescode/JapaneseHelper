@@ -17,8 +17,8 @@ angular.module('japaneseHelperApp')
         controller: function ($scope) {
         },
         link: function (scope, element, attrs) {
-  			var kanjis = new kanjiHelper.RtkList();  			
-  			var conversions = new kanjiHelper.KanjiKeywordList();
+  			var kanjis = kanjiHelper.RtkList;  			
+  			var conversions = kanjiHelper.KanjiKeywordList;
         
   			scope.totalItems = kanjis.Length();
   			scope.currentPage = 1;
