@@ -1,20 +1,11 @@
 <div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#" href="#">Home</a></li>
-  </ul>
-  <h3 class="text-muted">Guess Kanji Level Select</h3>
-</div>
-
-<div>
-
-    <ul>
-        <li><a href="/guess-kanji/0">Resume</a></li>
-
-        <li ng-repeat="level in levels">
-            <a ng-href="/guess-kanji/{{level}}">Level <span ng-bind="level"></span></a>
-        </li>
-
+    <ul class="nav nav-pills pull-right">
+        <li class="active"><a ng-href="#" href="#">Home</a></li>
     </ul>
+    <h3 class="text-muted">Guess Kanji Level Select</h3>
 </div>
 
-
+<div class="list-group">
+    <a class="list-group-item active" href="/guess-kanji/0">Resume Level <span ng-bind="currentLevel"></a>    
+    <a class="list-group-item" ng-repeat="level in levels" ng-href="/guess-kanji/{{level}}">Level <span ng-bind="level"></span></a>    
+</div>
