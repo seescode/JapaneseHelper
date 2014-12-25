@@ -1,0 +1,22 @@
+/* Empty. Add your own CSS if you like */
+
+.level-select-item {
+    width: 10em;
+    text-align: center;
+}
+
+.question-text {
+    height: 3em;
+    font-size: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.answer-option {
+    height: 1.5em;
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

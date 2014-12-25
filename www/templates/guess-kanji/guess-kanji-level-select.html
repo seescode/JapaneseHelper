@@ -1,0 +1,23 @@
+<ion-view title="Kanji List">
+    <ion-header-bar class="bar-stable nav-title-slide-ios7">
+        <div class="buttons">
+            <a class="button" href="#">Home</a>
+        </div>
+        <h1 class="title">Guess Kanji Level Select</h1>
+        <div class="buttons">
+        </div>
+    </ion-header-bar>
+
+    <ion-content class="padding">
+
+        <div>
+            <a class="item" href="#/guess-kanji/0">
+                <div>Resume Level <span ng-bind="currentLevel"></div>
+            </a>
+            <a ng-repeat="level in levels" ng-href="#/guess-kanji/{{level}}">Level <span ng-bind="level"></span></a>
+        </div>
+
+        <div kanji-group-selecter url="#/guess-kanji/" text="Level"></div>
+
+    </ion-content>
+</ion-view>

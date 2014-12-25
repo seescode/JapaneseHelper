@@ -1,0 +1,24 @@
+﻿<div class="row">
+    <div class="col">
+        <div class="row">
+            <ul class="list">
+                <a ng-repeat="level in firstHalfLevels" ng-href="{{url}}{{level}}">
+                    <li class="item level-select-item">
+                        <span ng-bind="text"></span> <span ng-bind="level"></span>
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row">
+            <ul class="list">
+                <a ng-repeat="level in lastHalfLevels" ng-href="{{url}}{{level}}">
+                    <li class="item level-select-item">
+                        <span ng-bind="text"></span> <span ng-bind="level"></span>
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+</div>
