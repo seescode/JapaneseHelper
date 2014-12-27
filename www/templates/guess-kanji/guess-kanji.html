@@ -5,26 +5,34 @@
             <a class="button" href="#/guess-kanji-level-select">Level Select</a>
         </div>
         <h1 class="title">Guess Kanji Level <span ng-bind="level"></span></h1>
-        <div class="buttons">
-        </div>
     </ion-header-bar>
     <ion-content class="padding">
-
-
-        <ul class="list">
-            <li class="item item-divider question-text">
-                <div class="question" question question-text="{{questionText.keyword}}"></div>
-            </li>
-            <li class="item answer-option" answer-option answer-text="{{answer1.kanji}}" ng-click="onAnswerOptionClick(answer1)">
-            </li>
-            <li class="item answer-option" answer-option answer-text="{{answer2.kanji}}" ng-click="onAnswerOptionClick(answer2)">
-            </li>
-            <li class="item answer-option" answer-option answer-text="{{answer3.kanji}}" ng-click="onAnswerOptionClick(answer3)">
-            </li>
-            <li class="item answer-option" answer-option answer-text="{{answer4.kanji}}" ng-click="onAnswerOptionClick(answer4)">
-            </li>
-
-        </ul>
-
+        <div class="row">
+            <div class="col">
+                <div style="float:left">Lvl: 1</div>
+                <div style="float:right">
+                    <i class="icon ion-heart"></i>
+                    <i class="icon ion-heart"></i>
+                    <i class="icon ion-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul class="list">
+                    <li class="item item-divider question-text">
+                        <div class="question" question question-text="{{questionText.keyword}}"></div>
+                    </li>
+                    <li class="item answer-option" answer-option answer-text="{{answer1.kanji}}" ng-click="onAnswerOptionClick(answer1)">
+                    </li>
+                    <li class="item answer-option" answer-option answer-text="{{answer2.kanji}}" ng-click="onAnswerOptionClick(answer2)">
+                    </li>
+                    <li class="item answer-option" answer-option answer-text="{{answer3.kanji}}" ng-click="onAnswerOptionClick(answer3)">
+                    </li>
+                    <li class="item answer-option" answer-option answer-text="{{answer4.kanji}}" ng-click="onAnswerOptionClick(answer4)">
+                    </li>
+                </ul>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
