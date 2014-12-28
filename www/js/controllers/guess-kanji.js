@@ -3,6 +3,9 @@
 angular.module('japaneseHelperApp')
   .controller('GuessKanjiCtrl', function ($scope, $stateParams, $location, levelGeneratorService) {
 
+      $scope.hp = 3;
+      $scope.maxHp = 3;
+
       //Get the current level from the url.
       $scope.level = $stateParams.level
 
@@ -60,8 +63,12 @@ angular.module('japaneseHelperApp')
           }
           else {
               alert("Wrong! " + $scope.questionText.keyword + " = " + $scope.questionText.kanji);
+              $scope.hp--;              
               $scope.questionText.incorrect();
-              $location.url('/guess-kanji-level-select');
+
+              if ($scope.hp <= 0) {
+                  $location.url('/guess-kanji-level-select');
+              }
           }
 
       };
