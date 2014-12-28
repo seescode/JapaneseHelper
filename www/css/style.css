@@ -20,3 +20,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.health-display {
+    float: right;
+}
+
+.level-display {
+    float: left;
+}

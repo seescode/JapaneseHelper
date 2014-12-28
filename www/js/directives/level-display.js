@@ -4,7 +4,7 @@ angular.module('japaneseHelperApp')
   .directive('levelDisplay', function() {
     return {
         restrict: 'A',
-        template: '<div style="float:left">Level: <span ng-bind="level"></span></div>',
+        template: '<div class="level-display">Level: <span ng-bind="level"></span></div>',
         scope: { 
             level: '@'
         },

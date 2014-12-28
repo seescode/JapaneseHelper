@@ -7,13 +7,13 @@ angular.module('japaneseHelperApp')
         template: '',
         scope: {
             hp: '@',
-            maxHp: '@'
+            maxHp: '@'  //TODO: maybe show an outlined heart for missing health.
         },
         controller: function ($scope) {
         },
         link: function (scope, element, attrs) {
             var buildView = function () {
-                var template = '<div style="float:right">';
+                var template = '<div class="health-display">';
 
                 for (var i = 0; i < scope.hp; i++) {
                     template += '<i class="icon ion-heart"></i>';
