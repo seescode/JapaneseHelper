@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('japaneseHelperApp').factory('kanjiItemService', function () {
+angular.module('japaneseHelperApp').factory('kanjiItemService', function ($localForage) {
 
     return function (kanji, keyword) {
 
@@ -25,15 +25,23 @@ angular.module('japaneseHelperApp').factory('kanjiItemService', function () {
 
         //TODO: make private method
         this.update = function (key) {
-            //var existingVal = localStorageService.get(key);
+            $localForage.getItem(key).then(function (data) {
+                var existingVal = data;
 
-            //if (existingVal == null) {
-            //    //localStorageService.set(key, '1');
-            //}
-            //else {
-            //    var incremented = parseInt(existingVal) + 1;
-            //    //localStorageService.set(key, String(incremented));
-            //}
+                if (existingVal == null) {
+                    $localForage.setItem(key, '1').then(function () {
+                    });
+                }
+                else {
+                    var incremented = parseInt(existingVal) + 1;
+
+                    $localForage.setItem(key, String(incremented)).then(function () {
+                    });
+                }
+            }, function (error) {
+                console.error(error);
+            });
+
         }
 
         this.kanji = kanji;
