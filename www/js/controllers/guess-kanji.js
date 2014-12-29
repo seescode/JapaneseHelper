@@ -1,26 +1,40 @@
 ﻿'use strict';
 
 angular.module('japaneseHelperApp')
-  .controller('GuessKanjiCtrl', function ($scope, $stateParams, $location, levelGeneratorService) {
+  .controller('GuessKanjiCtrl', function ($scope, $stateParams, $location, $localForage, levelGeneratorService) {
 
+      //TODO get this info from $localForage
       $scope.hp = 3;
       $scope.maxHp = 3;
 
       //Get the current level from the url.
       $scope.level = $stateParams.level
 
-      //var currentLevel = localStorageService.get('currentLevel');
-
-      //if (currentLevel === null) {
-          //localStorageService.set('currentLevel', '1');
-      //}
+      var kanjiSet;
 
       if ($scope.level == 0) {
-          //$scope.level = localStorageService.get('currentLevel');
-      }      
+          $localForage.getItem('currentLevel').then(function (data) {
+              $scope.level = data;
 
-      // Need to refactor and put this into the game logic service
-      var kanjiSet = levelGeneratorService.generate($scope.level);
+              if ($scope.level == null) {
+                  $localForage.setItem('currentLevel', 1).then(function () {
+                  });
+
+                  $scope.level = 1;
+              }
+
+              // Need to refactor and put this into the game logic service
+              kanjiSet = levelGeneratorService.generate($scope.level);
+
+              populateItems();
+          }, function (error) {
+              console.error(error);
+          });
+      } else {
+          kanjiSet = levelGeneratorService.generate($scope.level);
+
+          populateItems();
+      }
 
       function populateItems() {
 
@@ -54,7 +68,8 @@ angular.module('japaneseHelperApp')
                   $scope.level = String(lvl);
 
                   //save the level
-                  //localStorageService.set('currentLevel', lvl);
+                  $localForage.setItem('currentLevel', lvl).then(function () {
+                  });
 
                   kanjiSet = levelGeneratorService.generate($scope.level);
               }
@@ -63,17 +78,12 @@ angular.module('japaneseHelperApp')
           }
           else {
               alert("Wrong! " + $scope.questionText.keyword + " = " + $scope.questionText.kanji);
-              $scope.hp--;              
+              $scope.hp--;
               $scope.questionText.incorrect();
 
               if ($scope.hp <= 0) {
                   $location.url('/guess-kanji-level-select');
               }
           }
-
       };
-
-     
-      populateItems();
-
   });
