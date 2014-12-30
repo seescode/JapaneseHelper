@@ -1,7 +1,7 @@
 {
-  "name": "japaneserefactor",
+  "name": "JapaneseHelper",
   "version": "1.0.0",
-  "description": "JapaneseRefactor: An Ionic project",
+  "description": "JapaneseHelper",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
