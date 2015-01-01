@@ -4,7 +4,7 @@ angular.module('japaneseHelperApp')
   .directive('answerOption', function(kanjiHelper) {
     return {
         restrict: 'A',
-        template: '<div>{{answerText}}</div>',
+        template: '<div ng-bind="answerText"></div>',
         scope: { 
             answerText: '@'
         },

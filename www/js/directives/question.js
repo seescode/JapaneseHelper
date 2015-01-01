@@ -5,7 +5,7 @@ angular.module('japaneseHelperApp')
     return {
         restrict: 'A',
         replace: true,
-        template: '<div>{{questionText}}</div>',
+        template: '<div ng-bind="questionText"></div>',
         scope: {
             questionText: '@'
         },
