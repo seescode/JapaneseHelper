@@ -22,7 +22,7 @@ angular.module('japaneseHelperApp', [
       })
       .state('guess-kanji-level-select', {
           url: '/guess-kanji-level-select',
-          controller: 'GuessKanjiLevelSelectCtrl',
+          controller: 'GuessKanjiLevelSelectCtrl as vm',
           templateUrl: 'templates/guess-kanji/guess-kanji-level-select.html'
       })
       .state('guess-kanji', {

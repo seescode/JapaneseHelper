@@ -2,14 +2,15 @@
 
 angular.module('japaneseHelperApp')
   .controller('GuessKanjiLevelSelectCtrl', function ($scope, $localForage, kanjiHelper, constantsService) {
+      var vm = this;
 
       $localForage.getItem('currentLevel').then(function (data) {
-          $scope.currentLevel = data;
+          vm.currentLevel = data;
 
-          if ($scope.currentLevel == null) {
+          if (vm.currentLevel == null) {
               $localForage.setItem('currentLevel', 1).then(function () {
               });
-              $scope.currentLevel = 1;
+              vm.currentLevel = 1;
           }
       });
   });
