@@ -2,13 +2,14 @@
 
 angular.module('japaneseHelperApp')
   .controller('KanjiSetCtrl', function ($scope, $stateParams, $ionicModal, kanjiHelper, constantsService) {
+      var vm = this;
       var kanjis = kanjiHelper.RtkList;
       var conversions = kanjiHelper.KanjiKeywordList;
 
-      $scope.currentPage = $stateParams.level;
+      var currentPage = $stateParams.level;
  
-      $scope.showEnglish = function (kanji) {
-          $scope.keyword = conversions.Get(kanji);
+      vm.showEnglish = function (kanji) {
+          vm.keyword = conversions.Get(kanji);
           $scope.modal.show();
       };
 
@@ -24,25 +25,28 @@ angular.module('japaneseHelperApp')
           $scope.modal.remove();
       });
 
-      $scope.determineKanjiRange = function () {
-          $scope.startIndex = ($scope.currentPage - 1) * constantsService.KANJI_PER_LEVEL;
-          $scope.endIndex = $scope.currentPage * constantsService.KANJI_PER_LEVEL + 1;
+      var determineKanjiRange = function () {
+          var range = {};
+          range.startIndex = (currentPage - 1) * constantsService.KANJI_PER_LEVEL;
+          range.endIndex = currentPage * constantsService.KANJI_PER_LEVEL + 1;
 
-          if ($scope.endIndex > kanjis.Length()) {
-              $scope.endIndex = kanjis.Length();
+          if (range.endIndex > kanjis.Length()) {
+              range.endIndex = kanjis.Length();
           }
+
+          return range;
       }
 
-      $scope.generateItems = function () {
-          $scope.determineKanjiRange();
+      var generateItems = function () {
+          var range = determineKanjiRange();
 
           var pageItems = [];
-          for (var i = $scope.startIndex; i <= $scope.endIndex; i++) {
+          for (var i = range.startIndex; i <= range.endIndex; i++) {
               pageItems.push(kanjis.GetById(i));
           }
 
-          $scope.items = pageItems;
+          vm.items = pageItems;
       }
 
-      $scope.generateItems();
+      generateItems();
   });

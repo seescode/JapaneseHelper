@@ -1,7 +1,7 @@
 ﻿<ion-view title="Kanji List">
     <ion-content class="padding">
         <ul class="kanjis">
-            <li ng-repeat="i in items" ng-click="showEnglish(i)">
+            <li ng-repeat="i in vm.items" ng-click="vm.showEnglish(i)">
                 <span ng-bind="i"></span>
             </li>
         </ul>

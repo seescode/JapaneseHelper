@@ -17,7 +17,7 @@ angular.module('japaneseHelperApp', [
       })
       .state('kanji-set', { 
           url: '/kanji-set/:level',
-          controller: 'KanjiSetCtrl',
+          controller: 'KanjiSetCtrl as vm',
           templateUrl: 'templates/kanji-list/kanji-set.html'
       })
       .state('guess-kanji-level-select', {
