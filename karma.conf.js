@@ -11,10 +11,8 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-          'app/bower_components/jquery/dist/*.js',
-          'app/bower_components/bootstrap/dist/js/*.js',
           'www/lib/lodash/dist/lodash.js',
-          'www/lib/localforage/localforage.js',
+          'www/lib/localforage/dist/localforage.js',
           'www/lib/angular/angular.js',
           'www/lib/angular-mocks/angular-mocks.js',
           'www/lib/angular-animate/angular-animate.js',
