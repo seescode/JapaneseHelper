@@ -34,8 +34,15 @@ describe('Service: level-generator-service', function () {
             var kanjiItemService = function () { this.x = 2; };
             provide.value('kanjiItemService', kanjiItemService);
 
-            mockKanjiSetService = jasmine.createSpy('mockKanjiSetService');
-            provide.value('kanjiSetService', mockKanjiSetService);
+            //mockKanjiSetService = jasmine.createSpy('mockKanjiSetService');
+            //provide.value('kanjiSetService', mockKanjiSetService);
+
+            //mockKanjiSetService = jasmine.createSpyObj('mockKanjiSetService');
+            //provide.value('kanjiSetService', mockKanjiSetService);
+
+            //mockKanjiSetService = function () { };
+            //spyOn(window, 'mockKanjiSetService')
+            //provide.value('kanjiSetService', mockKanjiSetService);
         });
 
         // Inject the code under test
@@ -56,19 +63,19 @@ describe('Service: level-generator-service', function () {
         it('should generate correct number of kanji for level 1', function () {
             var kanjiSet = mySvc.generate(1);
 
-            expect(mockKanjiSetService.mostRecentCall.args[0].length).toEqual(5);
+            expect(kanjiSet.items.length).toEqual(5);
         });
 
         it('should generate correct number of kanji for level 2', function () {
             var kanjiSet = mySvc.generate(2);
 
-            expect(mockKanjiSetService.mostRecentCall.args[0].length).toEqual(5);
+            expect(kanjiSet.items.length).toEqual(5);
         });
 
         it('should generate correct number of kanji for last level', function () {
             var kanjiSet = mySvc.generate(3);
 
-            expect(mockKanjiSetService.mostRecentCall.args[0].length).toEqual(2);
+            expect(kanjiSet.items.length).toEqual(2);
         });
 
     });
