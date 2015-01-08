@@ -4,7 +4,7 @@
             <a class="button" href="#">Home</a>
             <a class="button" href="#/guess-kanji-level-select">Level Select</a>
         </div>
-        <h1 class="title">Guess Kanji</h1>
+        <h1 class="title">Guess Kanji Keyword</h1>
     </ion-header-bar>
     <ion-content class="padding">
         <div class="row">
@@ -17,15 +17,15 @@
             <div class="col">
                 <ul class="list">
                     <li class="item item-divider question-text">
-                        <div class="question" question question-text="{{questionText.kanji}}"><></div>
+                        <div class="question" question question-text="{{questionText.keyword}}"></div>
                     </li>
-                    <li class="item answer-option" answer-option answer-text="{{answer1.keyword}}" ng-click="onAnswerOptionClick(answer1)">
+                    <li class="item answer-option" answer-option answer-text="{{answer1.kanji}}" ng-click="onAnswerOptionClick(answer1)">
                     </li>
-                    <li class="item answer-option" answer-option answer-text="{{answer2.keyword}}" ng-click="onAnswerOptionClick(answer2)">
+                    <li class="item answer-option" answer-option answer-text="{{answer2.kanji}}" ng-click="onAnswerOptionClick(answer2)">
                     </li>
-                    <li class="item answer-option" answer-option answer-text="{{answer3.keyword}}" ng-click="onAnswerOptionClick(answer3)">
+                    <li class="item answer-option" answer-option answer-text="{{answer3.kanji}}" ng-click="onAnswerOptionClick(answer3)">
                     </li>
-                    <li class="item answer-option" answer-option answer-text="{{answer4.keyword}}" ng-click="onAnswerOptionClick(answer4)">
+                    <li class="item answer-option" answer-option answer-text="{{answer4.kanji}}" ng-click="onAnswerOptionClick(answer4)">
                     </li>
                 </ul>
             </div>

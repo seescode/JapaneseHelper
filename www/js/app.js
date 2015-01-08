@@ -26,7 +26,11 @@ angular.module('japaneseHelperApp', [
           templateUrl: 'templates/guess-kanji/guess-kanji-level-select.html',
           resolve: {
               config: function () {
-                  return { currentLevelKey: 'currentLevel' };
+                  return {
+                      currentLevelKey: 'currentKanjiLevel',
+                      guessKanjiUrl: '/guess-kanji',
+                      title: 'Guess Kanji Keyword Level Select'
+                  };
               }
           }
 
@@ -37,7 +41,39 @@ angular.module('japaneseHelperApp', [
           templateUrl: 'templates/guess-kanji/guess-kanji.html',
           resolve:{
               config: function () {
-                  return { currentLevelKey: 'currentLevel' };
+                  return {
+                      currentLevelKey: 'currentKanjiLevel',
+                      guessKanjiLevelSelectUrl: '/guess-kanji-level-select'
+                  };
+              }
+          }
+      })
+      .state('guess-kanji-keyword-level-select', {
+          url: '/guess-kanji-keyword-level-select',
+          controller: 'GuessKanjiLevelSelectCtrl as vm',
+          templateUrl: 'templates/guess-kanji/guess-kanji-level-select.html',
+          resolve: {
+              config: function () {
+                  return {
+                      currentLevelKey: 'currentKanjiKeywordLevel',
+                      guessKanjiUrl: '/guess-kanji-keyword',
+                      title: 'Guess Kanji Keyword Level Select'
+                  };
+              }
+          }
+
+      })
+      .state('guess-kanji-keyword', {
+          url: '/guess-kanji-keyword/:level',
+          controller: 'GuessKanjiCtrl',
+          templateUrl: 'templates/guess-kanji/guess-kanji-keyword.html',
+          resolve: {
+              config: function () {
+                  return {
+                      //TODO: move these strings into the constants-service
+                      currentLevelKey: 'currentKanjiKeywordLevel',
+                      guessKanjiLevelSelectUrl: '/guess-kanji-keyword-level-select'
+                  };
               }
           }
       })

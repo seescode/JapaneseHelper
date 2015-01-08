@@ -13,4 +13,7 @@ angular.module('japaneseHelperApp')
               vm.currentLevel = 1;
           }
       });
+
+      vm.guessKanjiUrl = config.guessKanjiUrl;
+      vm.title = config.title;
   });

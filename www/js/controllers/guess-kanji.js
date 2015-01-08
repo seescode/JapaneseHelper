@@ -82,7 +82,7 @@ angular.module('japaneseHelperApp')
               $scope.questionText.incorrect();
 
               if ($scope.hp <= 0) {
-                  $location.url('/guess-kanji-level-select');
+                  $location.url(config.guessKanjiLevelSelectUrl);
               }
           }
       };

@@ -3,7 +3,7 @@
         <div class="buttons">
             <a class="button" href="#">Home</a>
         </div>
-        <h1 class="title">Guess Kanji Level Select</h1>
+        <h1 class="title" ng-bind="vm.title"></h1>
         <div class="buttons">
         </div>
     </ion-header-bar>
@@ -11,12 +11,12 @@
     <ion-content class="padding">
 
         <div>
-            <a class="item" href="#/guess-kanji/0">
+            <a class="item" ng-href="#{{vm.guessKanjiUrl}}/0">
                 <div>Resume Level <span ng-bind="vm.currentLevel"></div>
             </a>
         </div>
 
-        <div kanji-group-selecter url="#/guess-kanji/" text="Level"></div>
+        <div kanji-group-selecter url="#{{vm.guessKanjiUrl}}/" text="Level"></div>
 
     </ion-content>
 </ion-view>
