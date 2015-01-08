@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 angular.module('japaneseHelperApp')
-  .controller('GuessKanjiCtrl', function ($scope, $stateParams, $location, $localForage, levelGeneratorService) {
+  .controller('GuessKanjiCtrl', function ($scope, $stateParams, $location, $localForage, levelGeneratorService, config) {
 
       //TODO get this info from $localForage
       $scope.hp = 3;
@@ -13,11 +13,11 @@ angular.module('japaneseHelperApp')
       var kanjiSet;
 
       if ($scope.level == 0) {
-          $localForage.getItem('currentLevel').then(function (data) {
+          $localForage.getItem(config.currentLevelKey).then(function (data) {
               $scope.level = data;
 
               if ($scope.level == null) {
-                  $localForage.setItem('currentLevel', 1).then(function () {
+                  $localForage.setItem(config.currentLevelKey, 1).then(function () {
                   });
 
                   $scope.level = 1;
@@ -68,7 +68,7 @@ angular.module('japaneseHelperApp')
                   $scope.level = String(lvl);
 
                   //save the level
-                  $localForage.setItem('currentLevel', lvl).then(function () {
+                  $localForage.setItem(config.currentLevelKey, lvl).then(function () {
                   });
 
                   kanjiSet = levelGeneratorService.generate($scope.level);

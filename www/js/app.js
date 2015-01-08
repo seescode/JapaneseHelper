@@ -23,12 +23,23 @@ angular.module('japaneseHelperApp', [
       .state('guess-kanji-level-select', {
           url: '/guess-kanji-level-select',
           controller: 'GuessKanjiLevelSelectCtrl as vm',
-          templateUrl: 'templates/guess-kanji/guess-kanji-level-select.html'
+          templateUrl: 'templates/guess-kanji/guess-kanji-level-select.html',
+          resolve: {
+              config: function () {
+                  return { currentLevelKey: 'currentLevel' };
+              }
+          }
+
       })
       .state('guess-kanji', {
           url: '/guess-kanji/:level',
           controller: 'GuessKanjiCtrl',
-          templateUrl: 'templates/guess-kanji/guess-kanji.html'
+          templateUrl: 'templates/guess-kanji/guess-kanji.html',
+          resolve:{
+              config: function () {
+                  return { currentLevelKey: 'currentLevel' };
+              }
+          }
       })
       .state('home', {
           url: '/home',

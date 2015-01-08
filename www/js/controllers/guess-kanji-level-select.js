@@ -1,14 +1,14 @@
 ﻿'use strict';
 
 angular.module('japaneseHelperApp')
-  .controller('GuessKanjiLevelSelectCtrl', function ($scope, $localForage, kanjiHelper, constantsService) {
+  .controller('GuessKanjiLevelSelectCtrl', function ($scope, $localForage, kanjiHelper, constantsService, config) {
       var vm = this;
 
-      $localForage.getItem('currentLevel').then(function (data) {
+      $localForage.getItem(config.currentLevelKey).then(function (data) {
           vm.currentLevel = data;
 
           if (vm.currentLevel == null) {
-              $localForage.setItem('currentLevel', 1).then(function () {
+              $localForage.setItem(config.currentLevelKey, 1).then(function () {
               });
               vm.currentLevel = 1;
           }
