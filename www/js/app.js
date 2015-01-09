@@ -29,7 +29,7 @@ angular.module('japaneseHelperApp', [
                   return {
                       currentLevelKey: 'currentKanjiLevel',
                       guessKanjiUrl: '/guess-kanji',
-                      title: 'Guess Kanji Keyword Level Select'
+                      title: 'Guess Kanji Level Select'
                   };
               }
           }
