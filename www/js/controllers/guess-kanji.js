@@ -2,36 +2,37 @@
 
 angular.module('japaneseHelperApp')
   .controller('GuessKanjiCtrl', function ($scope, $stateParams, $location, $localForage, levelGeneratorService, config) {
+      var vm = this;
 
       //TODO get this info from $localForage
-      $scope.hp = 3;
-      $scope.maxHp = 3;
+      vm.hp = 3;
+      vm.maxHp = 3;
 
       //Get the current level from the url.
-      $scope.level = $stateParams.level
+      vm.level = $stateParams.level
 
       var kanjiSet;
 
-      if ($scope.level == 0) {
+      if (vm.level == 0) {
           $localForage.getItem(config.currentLevelKey).then(function (data) {
-              $scope.level = data;
+              vm.level = data;
 
-              if ($scope.level == null) {
+              if (vm.level == null) {
                   $localForage.setItem(config.currentLevelKey, 1).then(function () {
                   });
 
-                  $scope.level = 1;
+                  vm.level = 1;
               }
 
               // Need to refactor and put this into the game logic service
-              kanjiSet = levelGeneratorService.generate($scope.level);
+              kanjiSet = levelGeneratorService.generate(vm.level);
 
               populateItems();
           }, function (error) {
               console.error(error);
           });
       } else {
-          kanjiSet = levelGeneratorService.generate($scope.level);
+          kanjiSet = levelGeneratorService.generate(vm.level);
 
           populateItems();
       }
@@ -46,42 +47,42 @@ angular.module('japaneseHelperApp')
           options.push(kanjiSet.getRandomOption());
           options = _.shuffle(options);
 
-          $scope.questionText = questionText;
-          $scope.answer1 = options[0];
-          $scope.answer2 = options[1];
-          $scope.answer3 = options[2];
-          $scope.answer4 = options[3];
+          vm.questionText = questionText;
+          vm.answer1 = options[0];
+          vm.answer2 = options[1];
+          vm.answer3 = options[2];
+          vm.answer4 = options[3];
       }
 
-      $scope.onAnswerOptionClick = function (kanjiItem) {
+      vm.onAnswerOptionClick = function (kanjiItem) {
 
-          if (kanjiItem.equals($scope.questionText)) {
+          if (kanjiItem.equals(vm.questionText)) {
 
-              $scope.questionText.correct();
+              vm.questionText.correct();
 
               if (kanjiSet.reachedLastElement() === true) {
                   alert("You win! Try the next level");
 
                   //increment the level
-                  var lvl = parseFloat($scope.level);
+                  var lvl = parseFloat(vm.level);
                   lvl++;
-                  $scope.level = String(lvl);
+                  vm.level = String(lvl);
 
                   //save the level
                   $localForage.setItem(config.currentLevelKey, lvl).then(function () {
                   });
 
-                  kanjiSet = levelGeneratorService.generate($scope.level);
+                  kanjiSet = levelGeneratorService.generate(vm.level);
               }
 
               populateItems();
           }
           else {
-              alert("Wrong! " + $scope.questionText.keyword + " = " + $scope.questionText.kanji);
-              $scope.hp--;
-              $scope.questionText.incorrect();
+              alert("Wrong! " + vm.questionText.keyword + " = " + vm.questionText.kanji);
+              vm.hp--;
+              vm.questionText.incorrect();
 
-              if ($scope.hp <= 0) {
+              if (vm.hp <= 0) {
                   $location.url(config.guessKanjiLevelSelectUrl);
               }
           }

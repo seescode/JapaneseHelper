@@ -37,7 +37,7 @@ angular.module('japaneseHelperApp', [
       })
       .state('guess-kanji', {
           url: '/guess-kanji/:level',
-          controller: 'GuessKanjiCtrl',
+          controller: 'GuessKanjiCtrl as vm',
           templateUrl: 'templates/guess-kanji/guess-kanji.html',
           resolve:{
               config: function () {
@@ -65,7 +65,7 @@ angular.module('japaneseHelperApp', [
       })
       .state('guess-kanji-keyword', {
           url: '/guess-kanji-keyword/:level',
-          controller: 'GuessKanjiCtrl',
+          controller: 'GuessKanjiCtrl as vm',
           templateUrl: 'templates/guess-kanji/guess-kanji-keyword.html',
           resolve: {
               config: function () {

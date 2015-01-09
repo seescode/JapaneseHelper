@@ -9,23 +9,23 @@
     <ion-content class="padding">
         <div class="row">
             <div class="col">
-                <div level-display level="{{level}}"></div>
-                <div health-display hp="{{hp}}" max-hp="{{maxHp}}"></div>
+                <div level-display level="{{vm.level}}"></div>
+                <div health-display hp="{{vm.hp}}" max-hp="{{vm.maxHp}}"></div>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <ul class="list">
                     <li class="item item-divider question-text">
-                        <div class="question" question question-text="{{questionText.keyword}}"></div>
+                        <div class="question" question question-text="{{vm.questionText.keyword}}"></div>
                     </li>
-                    <li class="item answer-option" answer-option answer-text="{{answer1.kanji}}" ng-click="onAnswerOptionClick(answer1)">
+                    <li class="item answer-option" answer-option answer-text="{{vm.answer1.kanji}}" ng-click="vm.onAnswerOptionClick(vm.answer1)">
                     </li>
-                    <li class="item answer-option" answer-option answer-text="{{answer2.kanji}}" ng-click="onAnswerOptionClick(answer2)">
+                    <li class="item answer-option" answer-option answer-text="{{vm.answer2.kanji}}" ng-click="vm.onAnswerOptionClick(vm.answer2)">
                     </li>
-                    <li class="item answer-option" answer-option answer-text="{{answer3.kanji}}" ng-click="onAnswerOptionClick(answer3)">
+                    <li class="item answer-option" answer-option answer-text="{{vm.answer3.kanji}}" ng-click="vm.onAnswerOptionClick(vm.answer3)">
                     </li>
-                    <li class="item answer-option" answer-option answer-text="{{answer4.kanji}}" ng-click="onAnswerOptionClick(answer4)">
+                    <li class="item answer-option" answer-option answer-text="{{vm.answer4.kanji}}" ng-click="vm.onAnswerOptionClick(vm.answer4)">
                     </li>
                 </ul>
             </div>
