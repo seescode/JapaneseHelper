@@ -1,5 +1,7 @@
 'use strict';
 
-angular.module('japaneseHelperApp')
-  .controller('MainCtrl', function ($scope, kanjiHelper) {
-  });
+(function () {
+    angular.module('japaneseHelperApp')
+      .controller('MainCtrl', function ($scope, kanjiHelper) {
+      });
+})();
