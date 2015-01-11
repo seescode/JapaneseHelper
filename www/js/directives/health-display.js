@@ -1,36 +1,39 @@
 'use strict';
 
-angular.module('japaneseHelperApp')
-  .directive('healthDisplay', function() {
-    return {
-        restrict: 'A',
-        template: '',
-        scope: {
-            hp: '@',
-            maxHp: '@'  //TODO: maybe show an outlined heart for missing health.
-        },
-        controller: function ($scope) {
-        },
-        link: function (scope, element, attrs) {
-            var buildView = function () {
-                var template = '<div class="health-display">';
+(function () {
 
-                for (var i = 0; i < scope.hp; i++) {
-                    template += '<i class="icon ion-heart"></i>';
-                }
+    angular.module('japaneseHelperApp')
+      .directive('healthDisplay', function () {
+          return {
+              restrict: 'A',
+              template: '',
+              scope: {
+                  hp: '@',
+                  maxHp: '@'  //TODO: maybe show an outlined heart for missing health.
+              },
+              controller: function ($scope) {
+              },
+              link: function (scope, element, attrs) {
+                  var buildView = function () {
+                      var template = '<div class="health-display">';
 
-                template += '</div">';
+                      for (var i = 0; i < scope.hp; i++) {
+                          template += '<i class="icon ion-heart"></i>';
+                      }
 
-                element.html(template);
-            };
+                      template += '</div">';
 
-            scope.$watch('hp', function (newValue, oldValue) {
-                if (newValue !== oldValue) {
-                    buildView();
-                }
-            });
+                      element.html(template);
+                  };
 
-            buildView();
-        }
-    }
-  });
+                  scope.$watch('hp', function (newValue, oldValue) {
+                      if (newValue !== oldValue) {
+                          buildView();
+                      }
+                  });
+
+                  buildView();
+              }
+          }
+      });
+})();
