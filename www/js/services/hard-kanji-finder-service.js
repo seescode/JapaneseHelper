@@ -10,6 +10,7 @@ angular.module('japaneseHelperApp').factory('hardKanjiFinderService', function (
             return hardKanjiArray;
         }
  
+        //"一C"
         //var item = new kanjiItemService(kanji, keyword);
 
         hardKanjiArray.push(new kanjiItemService('hi', 'fire'));

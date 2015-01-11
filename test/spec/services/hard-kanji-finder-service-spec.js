@@ -60,6 +60,17 @@ describe('Service: hard-kanji-finder-service', function () {
             expect(result.length).toEqual(1);
         });
 
+        it('should return the most difficult kanji for find(1)', function () {
+
+            var result = mySvc.find(1);
+            expect(result[0].keyword).toEqual('fire');
+        });
+
+        //it('should return only one result for find(1)', function () {
+
+        //    var result = mySvc.find(1);
+        //    expect(result.length).toEqual(1);
+        //});
 
     });
 });
