@@ -19,8 +19,13 @@ angular.module('japaneseHelperApp').factory('hardKanjiFinderService', function (
         return hardKanjiArray;
     },
 
-    determineRtkRange = function (level) {
+    findHardKanji = function (kanjiItems) {
+        //This method is where the bulk of the logic should happen.
+        //This method does not interact with $localForage.  The calling
+        //method will get the data from $localForage and pass it to this 
+        //method to do the work.
 
+        //this is a private method so no need to test this directly.
     };
 
 
