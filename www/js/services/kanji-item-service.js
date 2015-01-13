@@ -4,27 +4,7 @@
 
         return function (kanji, keyword) {
 
-            this.equals = function (item) {
-                if (this.kanji === item.kanji &&
-                    this.keyword === item.keyword) {
-                    return true;
-                }
-
-                return false;
-            };
-
-            this.correct = function () {
-                var key = this.kanji + 'C';
-                this.update(key);
-            };
-
-            this.incorrect = function () {
-                var key = this.kanji + 'I';
-                this.update(key);
-            };
-
-            //TODO: make private method
-            this.update = function (key) {
+            var update = function (key) {
                 $localForage.getItem(key).then(function (data) {
                     var existingVal = data;
 
@@ -41,11 +21,34 @@
                 }, function (error) {
                     console.error(error);
                 });
-
             }
 
-            this.kanji = kanji;
-            this.keyword = keyword;
+            var equals = function (item) {
+                if (kanji === item.kanji &&
+                    keyword === item.keyword) {
+                    return true;
+                }
+
+                return false;
+            };
+
+            var correct = function () {
+                var key = kanji + 'C';
+                update(key);
+            };
+
+            var incorrect = function () {
+                var key = kanji + 'I';
+                update(key);
+            };
+
+            return {
+                equals: equals,
+                correct: correct,
+                incorrect: incorrect,
+                kanji: kanji,
+                keyword: keyword
+            };
         }
     });
 })();
