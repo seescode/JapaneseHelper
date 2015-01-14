@@ -27,6 +27,7 @@
             //method to do the work.
 
             //this is a private method so no need to test this directly.
+            return [];
         },
         update = function (kanjiItem) {
             //Whenever someone gets something correct or incorrect we need to recalculate the
@@ -49,6 +50,7 @@
 
         return {
             find: find,
+            findHardKanji: findHardKanji,
             calculateDifficulty: calculateDifficulty
         };
     });

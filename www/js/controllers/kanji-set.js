@@ -1,15 +1,28 @@
 ﻿'use strict';
 (function () {
     angular.module('japaneseHelperApp')
-      .controller('KanjiSetCtrl', function ($scope, $stateParams, $ionicModal, kanjiHelper, constantsService) {
+      .controller('KanjiSetCtrl', function ($scope, $stateParams, $ionicModal, kanjiHelper, kanjiItemService, constantsService) {
           var vm = this;
           var kanjis = kanjiHelper.RtkList;
           var conversions = kanjiHelper.KanjiKeywordList;
 
           var currentPage = $stateParams.level;
 
-          vm.showEnglish = function (kanji) {
-              vm.keyword = conversions.Get(kanji);
+          vm.showEnglish = function (item) {
+              vm.keyword = item.keyword;
+
+              item.getTotalCorrect().then(function (data) {
+                  vm.correct = data;
+              }, function (error) {
+                  console.error(error);
+              });
+
+              item.getTotalIncorrect().then(function (data) {
+                  vm.incorrect = data;
+              }, function (error) {
+                  console.error(error);
+              });
+
               $scope.modal.show();
           };
 
@@ -42,7 +55,12 @@
 
               var pageItems = [];
               for (var i = range.startIndex; i <= range.endIndex; i++) {
-                  pageItems.push(kanjis.GetById(i));
+
+                  var kanji = kanjiHelper.RtkList.GetById(i);
+                  var keyword = kanjiHelper.KanjiKeywordList.Get(kanji);
+                  var item = new kanjiItemService(kanji, keyword);
+
+                  pageItems.push(item);
               }
 
               vm.items = pageItems;

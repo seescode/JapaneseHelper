@@ -33,7 +33,7 @@
             };
 
             var correct = function () {
-                var key = kanji + 'C';
+                var key = kanji + 'C';  //TODO: move to function or some shared area since this is duplicated.
                 update(key);
             };
 
@@ -42,10 +42,24 @@
                 update(key);
             };
 
+            var getTotalCorrect = function () {
+                var key = kanji + 'C';
+
+                return $localForage.getItem(key);
+            };
+
+            var getTotalIncorrect = function () {
+                var key = kanji + 'I';
+
+                return $localForage.getItem(key);
+            };
+
             return {
                 equals: equals,
                 correct: correct,
                 incorrect: incorrect,
+                getTotalCorrect: getTotalCorrect,
+                getTotalIncorrect: getTotalIncorrect,
                 kanji: kanji,
                 keyword: keyword
             };
