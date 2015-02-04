@@ -7,7 +7,7 @@
 
           //TODO get this info from $localForage
           vm.hp = 3;
-          vm.maxHp = 3;
+          vm.maxHp = 6;
 
           //Get the current level from the url.
           vm.level = $stateParams.level
@@ -68,6 +68,14 @@
                       var lvl = parseFloat(vm.level);
                       lvl++;
                       vm.level = String(lvl);
+
+                      //TODO move this to a service and 3 should be a constant.
+                      if (vm.hp < 3) {
+                          vm.hp = 3;
+                      }
+                      else if (vm.hp < vm.maxHp) {
+                          vm.hp++;
+                      }
 
                       //save the level
                       $localForage.setItem(config.currentLevelKey, lvl).then(function () {
