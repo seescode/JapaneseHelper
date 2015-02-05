@@ -46,6 +46,9 @@
 
               var options = [];
               var questionText = kanjiSet.getNext();
+
+              //TODO move this into a new method called kanjiSet.getOptions() alternatively just have 
+              //getNext() return an object with all this info.
               options.push(questionText);
               options.push(kanjiSet.getRandomOption());
               options.push(kanjiSet.getRandomOption());
