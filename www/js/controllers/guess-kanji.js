@@ -3,6 +3,10 @@
 (function () {
     angular.module('japaneseHelperApp')
       .controller('GuessKanjiCtrl', function ($scope, $stateParams, $location, $localForage, levelGeneratorService, config) {
+
+          //skipCorrect basically prevents you from getting points whenever you get something wrong and are
+          //shown the correct answer and then you answer it correctly.  That shouldn't count as a correct answer.
+          var skipCorrect = false;
           var vm = this;
 
           //TODO get this info from $localForage
@@ -59,7 +63,9 @@
 
               if (kanjiItem.equals(vm.questionText)) {
 
-                  vm.questionText.correct();
+                  if (skipCorrect == false) {
+                      vm.questionText.correct();
+                  }
 
                   if (kanjiSet.reachedLastElement() === true) {
                       alert("You win! Try the next level");
@@ -85,11 +91,13 @@
                   }
 
                   populateItems();
+                  skipCorrect = false;
               }
               else {
                   alert("Wrong! " + vm.questionText.keyword + " = " + vm.questionText.kanji);
                   vm.hp--;
                   vm.questionText.incorrect();
+                  skipCorrect = true;
 
                   if (vm.hp <= 0) {
                       $location.url(config.guessKanjiLevelSelectUrl);
