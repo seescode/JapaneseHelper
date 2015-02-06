@@ -8,8 +8,7 @@
               restrict: 'A',
               template: '',
               scope: {
-                  hp: '@',
-                  maxHp: '@'  //TODO: maybe show an outlined heart for missing health.
+                  hp: '@'
               },
               controller: function ($scope) {
               },

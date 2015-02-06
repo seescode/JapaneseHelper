@@ -2,7 +2,7 @@
 
 (function () {
     angular.module('japaneseHelperApp')
-      .controller('GuessKanjiCtrl', function ($scope, $stateParams, $location, $localForage, levelGeneratorService, config) {
+      .controller('GuessKanjiCtrl', function ($scope, $stateParams, $location, $localForage, levelGeneratorService, constantsService, config) {
 
           //skipCorrect basically prevents you from getting points whenever you get something wrong and are
           //shown the correct answer and then you answer it correctly.  That shouldn't count as a correct answer.
@@ -11,7 +11,6 @@
 
           //TODO get this info from $localForage
           vm.hp = 3;
-          vm.maxHp = 6;
 
           //Get the current level from the url.
           vm.level = $stateParams.level
@@ -82,7 +81,7 @@
                       if (vm.hp < 3) {
                           vm.hp = 3;
                       }
-                      else if (vm.hp < vm.maxHp) {
+                      else if (vm.hp < constantsService.MAX_HEALTH) {
                           vm.hp++;
                       }
 
