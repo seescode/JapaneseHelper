@@ -9,8 +9,7 @@
           var skipCorrect = false;
           var vm = this;
 
-          //TODO get this info from $localForage
-          vm.hp = 3;
+          vm.hp = constantsService.STARTING_HEALTH;
 
           //Get the current level from the url.
           vm.level = $stateParams.level
@@ -78,8 +77,8 @@
                       vm.level = String(lvl);
 
                       //TODO move this to a service and 3 should be a constant.
-                      if (vm.hp < 3) {
-                          vm.hp = 3;
+                      if (vm.hp < constantsService.STARTING_HEALTH) {
+                          vm.hp = constantsService.STARTING_HEALTH;
                       }
                       else if (vm.hp < constantsService.MAX_HEALTH) {
                           vm.hp++;
