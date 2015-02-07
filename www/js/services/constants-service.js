@@ -3,9 +3,9 @@
 (function () {
     angular.module('japaneseHelperApp').factory('constantsService', function () {
         return {
-            KANJI_PER_LEVEL: 25,
-            STARTING_HEALTH: 3,
-            MAX_HEALTH: 5
+            KANJI_PER_LEVEL: 10,
+            STARTING_HEALTH: 2,
+            MAX_HEALTH: 6
         };
     });
 })();
