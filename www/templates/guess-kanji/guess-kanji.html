@@ -1,0 +1,34 @@
+<ion-view title="Kanji List">
+    <ion-header-bar class="bar-stable nav-title-slide-ios7">
+        <div class="buttons">
+            <a class="button" href="#">Home</a>
+            <a class="button" href="#/guess-kanji-level-select">Level Select</a>
+        </div>
+        <h1 class="title">Guess Kanji</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="row">
+            <div class="col">
+                <div level-display level="{{vm.level}}"></div>
+                <div health-display hp="{{vm.hp}}"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul class="list">
+                    <li class="item item-divider question-text">
+                        <div class="question" question question-text="{{vm.questionText.kanji}}"><></div>
+                    </li>
+                    <li class="item answer-option" answer-option answer-text="{{vm.answer1.keyword}}" ng-click="vm.onAnswerOptionClick(vm.answer1)">
+                    </li>
+                    <li class="item answer-option" answer-option answer-text="{{vm.answer2.keyword}}" ng-click="vm.onAnswerOptionClick(vm.answer2)">
+                    </li>
+                    <li class="item answer-option" answer-option answer-text="{{vm.answer3.keyword}}" ng-click="vm.onAnswerOptionClick(vm.answer3)">
+                    </li>
+                    <li class="item answer-option" answer-option answer-text="{{vm.answer4.keyword}}" ng-click="vm.onAnswerOptionClick(vm.answer4)">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,9 @@
+﻿<ion-view title="Kanji List">
+    <ion-content class="padding">
+        <ul class="kanjis">
+            <li ng-repeat="i in vm.items" ng-click="vm.showEnglish(i)">
+                <span ng-bind="i.kanji"></span>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>
