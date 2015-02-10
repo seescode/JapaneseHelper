@@ -20,9 +20,24 @@ describe('Service: kanji-item-service', function () {
 
     // Call this before each test, except where you are testing for errors
     function _setup() {
+        var mockLocalForage = {};
+        mockLocalForage.getItem = function () {
+            return {
+                then: function () {
+                }
+            };
+        };
+        mockLocalForage.setItem = function () {
+            return {
+                then: function () {
+                }
+            };
+        };
+
+
         // Mock any expected data
         _provide(function (provide) {
-            provide.value('myVal', {});
+            provide.value('$localForage', mockLocalForage);
         });
 
         // Inject the code under test
