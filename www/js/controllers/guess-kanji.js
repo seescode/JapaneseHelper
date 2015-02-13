@@ -42,22 +42,13 @@
 
           function populateItems() {
 
-              var options = [];
-              var questionText = kanjiSet.getNext();
+              var set = kanjiSet.getNextSet();
 
-              //TODO move this into a new method called kanjiSet.getOptions() alternatively just have 
-              //getNext() return an object with all this info.
-              options.push(questionText);
-              options.push(kanjiSet.getRandomOption());
-              options.push(kanjiSet.getRandomOption());
-              options.push(kanjiSet.getRandomOption());
-              options = _.shuffle(options);
-
-              vm.questionText = questionText;
-              vm.answer1 = options[0];
-              vm.answer2 = options[1];
-              vm.answer3 = options[2];
-              vm.answer4 = options[3];
+              vm.questionText = set.questionText;
+              vm.answer1 = set.options[0];
+              vm.answer2 = set.options[1];
+              vm.answer3 = set.options[2];
+              vm.answer4 = set.options[3];
           }
 
           vm.onAnswerOptionClick = function (kanjiItem) {

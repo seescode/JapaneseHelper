@@ -36,6 +36,21 @@
                 return this.items[this.nextIndex];
             };
 
+            this.getNextSet = function () {
+                var set = {};
+
+                set.questionText = this.getNext();
+                set.options = [];
+
+                set.options.push(set.questionText);
+                set.options.push(this.getRandomOption());
+                set.options.push(this.getRandomOption());
+                set.options.push(this.getRandomOption());
+                set.options = _.shuffle(set.options);
+
+                return set;
+            };
+
             //Call this method after you have gotten getNext() in order to get possible
             //random values to choose from.
             this.getRandomOption = function () {
